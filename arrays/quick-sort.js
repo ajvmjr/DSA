@@ -8,7 +8,6 @@ function quickSort(arr, start, end) {
 }
 
 function partition (arr, start, end) {
-  console.log({start, end})
   const pivot = arr[end];
 
   let i = start - 1;
@@ -30,9 +29,4 @@ function partition (arr, start, end) {
 }
 
 const nums = [8, 2, 4, 7, 1, 3, 9, 6, 5];
-
-const start = performance.now();
-
 quickSort(nums, 0, nums.length - 1);
-
-const end = performance.now();
