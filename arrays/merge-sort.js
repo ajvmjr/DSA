@@ -47,5 +47,3 @@ function merge(leftList, rightList, originalList) {
 
 const nums = [8, 2, 4, 7, 1, 3, 9, 6, 5];
 mergeSort(nums);
-
-console.log(nums)
