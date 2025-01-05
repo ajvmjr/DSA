@@ -34,6 +34,7 @@ The repository is organized as follows:
 
 ## Contributions
 
-- This repository is primarily for personal learning and growth, but feel free to:
+This repository is primarily for personal learning and growth, but feel free to:
+
 - Suggest improvements to existing solutions via pull requests.
 - Open issues to discuss alternate approaches or optimizations.
