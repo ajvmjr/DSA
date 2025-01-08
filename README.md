@@ -27,7 +27,7 @@ The repository is organized as follows:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/DSA.git
+   git clone https://github.com/ajvmjr/DSA.git
    ```
 2. Explore the folders to find specific algorithms or problem solutions.
 3. Run the code locally to see the implementations in action.
