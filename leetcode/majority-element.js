@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-// Solution 1
+// Solution 1 - Time O(n) - Space O(n)
 
 var majorityElement = function (nums) {
   const hashMap = {};
@@ -27,3 +27,31 @@ var majorityElement = function (nums) {
 
   return +maxKey;
 };
+
+// Solution 2 - Time O(n) - Space O(1)
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+
+var majorityElement = function (nums) {
+  let majority;
+  let count = 0;
+
+  for (let num of nums) {
+    if (count === 0) {
+      majority = num;
+    }
+
+    if (num === majority) {
+      count++;
+    } else {
+      count--;
+    }
+  }
+
+  return majority;
+};
+
+// https://leetcode.com/problems/majority-element
