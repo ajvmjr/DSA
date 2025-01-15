@@ -146,7 +146,23 @@ class LinkedList {
 
     return node;
   }
-}
+
+  /** Reverses the linked list in an iterative manner. */
+  reverse1(): void {
+    let prev: ListNode | null = null;
+    let current: ListNode | null = this.head;
+    let next: ListNode | null = null;
+
+    while (current !== null) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    this.head = prev;
+  }
+} 
 
 const node1 = new ListNode(2);
 const node2 = new ListNode(10);
@@ -174,5 +190,9 @@ linkedList.removeLast();
 linkedList.removeFirst();
 
 const found = linkedList.search("data");
+
+console.log(JSON.stringify(linkedList))
+
+linkedList.reverse1();
 
 console.log(JSON.stringify(linkedList))
