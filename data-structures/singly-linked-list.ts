@@ -102,19 +102,14 @@ class LinkedList {
     if (!this.head) return;
 
     let current = this.getFirst();
-    const size = this.size();
 
-    for (let i = 1; i < size; i++) {
-      if (!current) {
-        throw new Error("Invalid position: Position exceeds list size");
-      }
-
-      if (i === size - 1) {
-        current.next = null;
-      }
-
+    if (!current) return;
+  
+    if (current.next && current.next.next) {
       current = current.next;
     }
+
+    current.next = null
   }
 
   removeAtPosition(position: number): void {
