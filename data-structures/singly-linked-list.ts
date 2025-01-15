@@ -147,7 +147,7 @@ class LinkedList {
     return node;
   }
 
-  /** Reverses the linked list in an iterative manner. */
+  /** Reverses the linked list in an iterative manner. */ //Time: O(n) -> Space: O(1)
   reverse1(): void {
     let prev: ListNode | null = null;
     let current: ListNode | null = this.head;
@@ -161,6 +161,19 @@ class LinkedList {
     }
 
     this.head = prev;
+  }
+  
+  /** Reverses the linked list in a recursive manner. */ //Time: O(n) -> Space: O(n)
+  reverse2(head: ListNode | null): ListNode | null {
+    if (head === null || head.next === null) return head;
+
+    const newHead = this.reverse2(head.next);
+
+    const front = head.next;
+    front.next = head;
+    head.next = null;
+
+    return newHead;
   }
 } 
 
@@ -186,13 +199,13 @@ function traverseLinkedList () {
 }
 
 linkedList.insertAtPosition("insertAtPos", 5)
-linkedList.removeLast();
-linkedList.removeFirst();
+// linkedList.removeLast();
+// linkedList.removeFirst();
 
 const found = linkedList.search("data");
 
 console.log(JSON.stringify(linkedList))
 
-linkedList.reverse1();
+linkedList.head = linkedList.reverse2(linkedList.head);
 
 console.log(JSON.stringify(linkedList))
