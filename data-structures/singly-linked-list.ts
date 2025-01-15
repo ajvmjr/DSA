@@ -55,7 +55,14 @@ class LinkedList {
     const last = this.getLast();
     if (!last) return;
 
-    last.next = new ListNode(data);
+    const node = new ListNode(data);
+
+    if (!this.head) {
+      this.insertAtFront(node);
+      return;
+    }
+
+    last.next = node;
   }
 
   insertAtPosition(data: unknown, position: number): void {
