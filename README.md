@@ -16,6 +16,7 @@ The repository is organized as follows:
 
 - **Algorithms/**: Contains implementations of common algorithms like sorting, searching, merging, and more.
 - **LeetCode/**: Includes solutions to LeetCode problems, categorized by topic (e.g., strings, arrays, recursion, dynamic programming).
+- **Data-Structures/**: Includes my own implementations of various data structures, such as linked lists, stacks, queues, and more.
 
 ## Highlights
 
