@@ -101,11 +101,11 @@ class LinkedList {
   removeLast(): void {
     if (!this.head) return;
 
-    let current = this.getFirst();
+    let current = this.head;
 
     if (!current) return;
-  
-    if (current.next && current.next.next) {
+
+    while (current.next && current.next.next) {
       current = current.next;
     }
 
