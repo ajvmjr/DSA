@@ -64,6 +64,11 @@ class DoublyLinkedList {
       return;
     }
 
+    if (position === 1) {
+      this.insertAtFront(data);
+      return;
+    }
+
     let node = this.head;
 
     for (let i = 1; i < position; i++) {
@@ -128,7 +133,7 @@ doublyLinkedList.insertAtEnd("testNewTail");
 
 // traverseLinkedListFromTailToHead(tail);
 
-doublyLinkedList.insertAtPos("test", 2)
+doublyLinkedList.insertAtPos("test", 1)
 traverseLinkedListFromHeadToTail(doublyLinkedList.head);
 
 console.log(doublyLinkedList.size)
