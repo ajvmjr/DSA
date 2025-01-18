@@ -3,7 +3,11 @@ export class ListNode {
   prev: ListNode | null;
   next: ListNode | null;
 
-  constructor(data: unknown, prev: ListNode | null = null, next: ListNode | null = null) {
+  constructor(
+    data: unknown,
+    prev: ListNode | null = null,
+    next: ListNode | null = null
+  ) {
     this.data = data;
     this.prev = prev;
     this.next = next;
@@ -73,7 +77,7 @@ class DoublyLinkedList {
 
     for (let i = 1; i < position; i++) {
       if (!node.next) {
-        throw new Error("Invalid position: Position exceeds list size"); 
+        throw new Error("Invalid position: Position exceeds list size");
       }
 
       node = node.next;
@@ -94,7 +98,21 @@ class DoublyLinkedList {
     this.incrementSize();
   }
 
-  private createFirstNodeToEmptyList (data: unknown): ListNode | null {
+  search(data: unknown): ListNode | null {
+    if (this.head === null) return null;
+
+    let node: ListNode | null = this.head;
+
+    while (node !== null) {
+      if (node.data === data) return node;
+
+      node = node.next;
+    }
+
+    return null;
+  }
+
+  private createFirstNodeToEmptyList(data: unknown): ListNode | null {
     const node = new ListNode(data);
     this.head = node;
     this.tail = node;
@@ -104,7 +122,7 @@ class DoublyLinkedList {
   }
 }
 
-function traverseLinkedListFromHeadToTail (head: ListNode | null = null) {
+function traverseLinkedListFromHeadToTail(head: ListNode | null = null) {
   if (head === null) return;
 
   let node: ListNode | null = head;
@@ -114,7 +132,7 @@ function traverseLinkedListFromHeadToTail (head: ListNode | null = null) {
   }
 }
 
-function traverseLinkedListFromTailToHead (tail: ListNode | null = null) {
+function traverseLinkedListFromTailToHead(tail: ListNode | null = null) {
   if (tail === null) return;
 
   let node: ListNode | null = tail;
@@ -133,7 +151,9 @@ doublyLinkedList.insertAtEnd("testNewTail");
 
 // traverseLinkedListFromTailToHead(tail);
 
-doublyLinkedList.insertAtPos("test", 1)
-traverseLinkedListFromHeadToTail(doublyLinkedList.head);
+doublyLinkedList.insertAtPos("test", 1);
+// traverseLinkedListFromHeadToTail(doublyLinkedList.head);
 
-console.log(doublyLinkedList.size)
+console.log("testForData", doublyLinkedList.search(node1.data));
+
+console.log(doublyLinkedList.size);
