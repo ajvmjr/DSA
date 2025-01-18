@@ -167,6 +167,22 @@ class DoublyLinkedList {
     this.decrementSize();
   }
 
+  /** Reverses the linked list in an iterative manner. */ //Time: O(n) -> Space: O(1)
+  reverse1(): void {
+    let current: ListNode | null = this.head;
+    let temp: ListNode | null = null;
+
+    while (current !== null) {
+      temp = current.next;
+
+      current.next = current.prev;
+      current.prev = temp;
+
+      this.head = current;
+      current = temp;
+    }
+  }
+
   private createFirstNodeToEmptyList(data: unknown): ListNode | null {
     const node = new ListNode(data);
     this.head = node;
@@ -195,5 +211,10 @@ doublyLinkedList.insertAtFront("testNewHead");
 doublyLinkedList.insertAtEnd("testNewTail");
 
 doublyLinkedList.insertAtPos("test", 1);
+
+console.log("----------BEFORE REVERSE-------------");
 traverseLinkedListFromHeadToTail(doublyLinkedList.head);
-console.log(doublyLinkedList.size);
+
+console.log("----------AFTER REVERSE-------------");
+doublyLinkedList.reverse1();
+traverseLinkedListFromHeadToTail(doublyLinkedList.head);
