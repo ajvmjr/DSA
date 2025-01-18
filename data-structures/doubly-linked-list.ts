@@ -112,6 +112,61 @@ class DoublyLinkedList {
     return null;
   }
 
+  removeAtFront(): void {
+    if (this.head === null) return;
+
+    this.head = this.head.next;
+
+    if (this.head) {
+      this.head.prev = null;
+    }
+
+    this.decrementSize();
+  }
+
+  removeAtEnd(): void {
+    if (this.head === null || this.tail === null) return;
+
+    this.tail = this.tail.prev;
+
+    if (this.tail) {
+      this.tail.next = null;
+    }
+
+    this.decrementSize();
+  }
+
+  removeAtPosition(position: number): void {
+    if (this.head === null) return;
+
+    if (position === 1) {
+      this.removeAtFront();
+      return;
+    }
+
+    let node = this.head;
+
+    for (let i = 1; i < position; i++) {
+      if (!node.next) {
+        throw new Error("Invalid position: Position exceeds list size");
+      }
+
+      node = node.next;
+    }
+
+    if (node === null) return;
+
+    if (node.prev) {
+      node.prev.next = node.next;
+    }
+
+    if (node.next) {
+      node.next.prev = node.prev;
+    }
+
+    this.decrementSize();
+  }
+
   private createFirstNodeToEmptyList(data: unknown): ListNode | null {
     const node = new ListNode(data);
     this.head = node;
@@ -132,16 +187,6 @@ function traverseLinkedListFromHeadToTail(head: ListNode | null = null) {
   }
 }
 
-function traverseLinkedListFromTailToHead(tail: ListNode | null = null) {
-  if (tail === null) return;
-
-  let node: ListNode | null = tail;
-  while (node !== null) {
-    console.log(node);
-    node = node.prev;
-  }
-}
-
 const node1 = new ListNode("node1");
 
 const doublyLinkedList = new DoublyLinkedList(node1);
@@ -149,11 +194,6 @@ const doublyLinkedList = new DoublyLinkedList(node1);
 doublyLinkedList.insertAtFront("testNewHead");
 doublyLinkedList.insertAtEnd("testNewTail");
 
-// traverseLinkedListFromTailToHead(tail);
-
 doublyLinkedList.insertAtPos("test", 1);
-// traverseLinkedListFromHeadToTail(doublyLinkedList.head);
-
-console.log("testForData", doublyLinkedList.search(node1.data));
-
+traverseLinkedListFromHeadToTail(doublyLinkedList.head);
 console.log(doublyLinkedList.size);
