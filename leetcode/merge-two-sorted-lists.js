@@ -10,6 +10,7 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
+// Time O(n + m) - Space O(n + m)
 var mergeTwoLists = function (list1, list2) {
   let head = null;
 
