@@ -124,6 +124,47 @@ class BinarySearchTree {
       parent.right = successor;
     }
   }
+
+  bst() {
+    let currentNode = this.root;
+    let list = [];
+    let queue = [];
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      list.push(currentNode.value);
+
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+
+    return list;
+  }
+
+  bstRecursive(queue, list) {
+    if (queue.length === 0) {
+      return list;
+    }
+
+    let currentNode = queue.shift();
+    list.push(currentNode.value);
+
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+
+    return this.bstRecursive(queue, list);
+  }
 }
 
 const bst = new BinarySearchTree();
@@ -140,11 +181,8 @@ bst.insert(170);
 bst.insert(15);
 bst.insert(1);
 
-console.log(JSON.stringify(traverse(bst.root)));
-
-bst.delete(20);
-console.log("--------- AFTER DELETING 20 ----------");
-console.log(JSON.stringify(traverse(bst.root)));
+console.log(bst.bst());
+console.log(bst.bstRecursive([bst.root], []));
 function traverse(node) {
   if (node === null) return null;
 
