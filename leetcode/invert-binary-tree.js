@@ -37,4 +37,19 @@ var invertTree = function (root) {
   return root;
 };
 
+// Time O(n) - Space O(h) -> h = tree height -> balanced tree = O(log n) -> skewed tree = O(n)
+var invertTree = function (root) {
+  if (!root) return root;
+  if (!root?.left && !root?.right) return root;
+
+  const temp = root.left;
+  root.left = root.right;
+  root.right = temp;
+
+  invertTree(root.left);
+  invertTree(root.right);
+
+  return root;
+};
+
 // https://leetcode.com/problems/invert-binary-tree
